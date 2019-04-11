@@ -1,0 +1,8 @@
+table{
+	font-size: 16px;
+	background-color: olive;
+	background-image: url(../descarga.jpg);
+}
+tr:nth-child(odd){
+	background-color: lightblue;
+}
