@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Combinando php y html</title>
+	<title>Ejercicio Combinando php y html</title>
 </head>
 <body>
 	<h1>cabecera con html</h1>
