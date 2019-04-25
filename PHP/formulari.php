@@ -9,6 +9,18 @@
     <script src='main.js'></script>
 </head>
 <body>
-    
+<?php
+if(isset($_POST['submit'])){
+    $edad= $_POST['edad'];
+    echo "$edad";
+    }else{
+?>
+    <form action="formulari.php" method="POST">
+        <label>edad:<input type="text" name="edad"></label>
+        <label><input type="submit" name="submit" value="Aceptar"></label>
+    </form>
+<?php
+}
+?> 
 </body>
 </html>
