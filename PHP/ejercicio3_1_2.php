@@ -67,7 +67,9 @@ División<input type="radio" name="operacion" value="division">
 <br>
 <br>
 <input type="submit" name="submit" value="calcular">
-
+<!--en el input submit el parámetro que miramos 
+desde php es el name="submit" que recogemos en
+isset($_GET['submit'])   -->
 </form>
 <?php
 }
