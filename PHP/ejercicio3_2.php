@@ -21,5 +21,19 @@ calculadora que haga las diferentes operaciones de dos valores
 - Radio buttons con la operación a seleccionar
 - 1 botón de envío de datos
 */
- aa
 ?>
+<form action="" method="post">
+Número 1<input type="text" name="num1" id="num1">
+Número 2<input type="text" name="num2" id="num2">
+<br>
+<br>
+Elige una operación 
+<br>
+Suma<input type="radio" name="calc" id="suma">
+Resta<input type="radio" name="calc" id="resta">
+Multiplicación<input type="radio" name="calc" id="multiplicación">
+División<input type="radio" name="calc" id="división">
+<br>
+<br>
+<input type="button" value="calcular">
+</form>
