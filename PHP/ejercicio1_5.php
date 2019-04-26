@@ -39,6 +39,7 @@ if(isset($_POST['submit'])){
         <label>edad:<input type="text" name="edad"></label>
         <label><input type="submit" name="submit" value="Aceptar"></label>
     </form>
+
 <?php
 }
 ?> 
