@@ -8,8 +8,7 @@
 </head>
 <body>
     
-</body>
-</html>
+
 
 <?php
 
@@ -21,19 +20,51 @@ calculadora que haga las diferentes operaciones de dos valores
 - Radio buttons con la operación a seleccionar
 - 1 botón de envío de datos
 */
+if(isset($_GET['submit'])){
+    $numero1= $_GET['numero1'];
+    
+    $numero2= $_GET['numero2'];
+    
+    
+
+    if (isset($_GET['operacion'])) {
+        if($_GET['operacion']=='suma'){
+            $resultado=$numero1+$numero2;
+            echo $resultado;
+        }
+        if($_GET['operacion']=='resta'){
+            $resultado=$numero1-$numero2;
+            echo $resultado;
+        }
+        if($_GET['operacion']=='multiplicacion'){
+            $resultado=$numero1*$numero2;
+            echo $resultado;
+        }
+        if($_GET['operacion']=='division'){
+            $resultado=$numero1/$numero2;
+            echo $resultado;
+        }                        
+    }
+}else{
 ?>
-<form action="" method="post">
-Número 1<input type="text" name="num1" id="num1">
-Número 2<input type="text" name="num2" id="num2">
+<form action="ejercicio3_2.php" method="GET">
+Número 1<input type="text" name="numero1" id="numero1">
+Número 2<input type="text" name="numero2" id="numero2">
 <br>
 <br>
 Elige una operación 
 <br>
-Suma<input type="radio" name="calc" id="suma">
-Resta<input type="radio" name="calc" id="resta">
-Multiplicación<input type="radio" name="calc" id="multiplicación">
-División<input type="radio" name="calc" id="división">
+Suma<input type="radio" name="operacion" value="suma">
+Resta<input type="radio" name="operacion" value="resta">
+Multiplicación<input type="radio" name="operacion" value="multiplicacion">
+División<input type="radio" name="operacion" value="division">
 <br>
 <br>
-<input type="button" value="calcular">
+<input type="submit" name="submit" value="calcular">
+
 </form>
+<?php
+}
+?>
+</body>
+</html>
