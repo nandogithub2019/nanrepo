@@ -29,7 +29,7 @@ $nombre = $apellidos = $edad = $email = $comentarios
 = $nombreErr = $apellidosErr = $edadErr = $emailErr = 
 $comentariosErr = "";
 
-
+if(isset($_REQUEST['submit'])){
     if (empty($_REQUEST["nombre"])) {
       $nombreErr = "Nombre obligatorio";
     } else {
@@ -40,6 +40,17 @@ $comentariosErr = "";
       }
     }
     
+    if (empty($_REQUEST["apellidos"])) {
+        $apellidos = "";
+      } else {
+        $apellidos = test_input($_REQUEST["apellidos"]);
+      }
+  
+      if (!empty($_REQUEST["edad"])) {
+        if(!($edad >= 18)){
+            $edadErr = "Ha de ser mayor o igual a 18 años";
+        }
+      }
     if (empty($_REQUEST["email"])) {
       $emailErr = "Email obligatorio";
     } else {
@@ -56,7 +67,7 @@ $comentariosErr = "";
       $comentarios = test_input($_REQUEST["comentarios"]);
     }
 
-  
+} 
   
 
 
@@ -68,14 +79,14 @@ function test_input($data) {
 }
 ?>
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+<form method="REQUEST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 Nombre*: <input type="text" name="nombre" value="<?php echo $nombre;?>"><span class="error"><?php echo $nombreErr;?></span>
 <br><br>
 Apellidos: <input type="text" name="apellidos" value="<?php echo $apellidos;?>">
 <br><br>
-Edad: <input type="number" name="edad" value="<?php echo $edad;?>">
+Edad: <input type="number" name="edad" value="<?php echo $edad;?>"><span class="error"><?php echo $edadErr;?></span>
 <br><br>
-E-mail*: <input type="text" name="email" value="<?php echo $email;?>">
+E-mail*: <input type="text" name="email" value="<?php echo $email;?>"><span class="error"><?php echo $emailErr;?></span>
 <br><br>
 Comentarios: <textarea name="comentarios" rows="5" cols="40"><?php echo $comentarios;?></textarea>
 <br><br>
