@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" media="screen" />
     <title>Document</title>
 </head>
 <body>
@@ -25,6 +26,11 @@ rellenado para evitar que el usuario olvide que ha introducido.
 */
 
 // define variables and set to empty values
+/*Para asegurarnos que hacemos correctamente la validación del formulario
+  los imputs los ponemos tipo text en lugar de tipo email o number, 
+  porque si ponemos primero tipo number, nos hace el filtro 
+  desde html y no vemos si la validación php funciona. una vez
+  comprobado se vuelve a poner el tipo input number o email etc  */ 
 $nombre = $apellidos = $edad = $email = $comentarios 
 = $nombreErr = $apellidosErr = $edadErr = $emailErr = 
 $comentariosErr = "";
@@ -32,7 +38,7 @@ $comentariosErr = "";
 if(isset($_REQUEST['submit'])){
     if (empty($_REQUEST["nombre"])) {
       $nombreErr = "Nombre obligatorio";
-    } else {
+    }else{
       $nombre = test_input($_REQUEST["nombre"]);
       // check if name only contains letters and whitespace
       if (!preg_match("/^[a-zA-Z ]*$/",$nombre)) {
@@ -44,10 +50,14 @@ if(isset($_REQUEST['submit'])){
         $apellidos = "";
       } else {
         $apellidos = test_input($_REQUEST["apellidos"]);
+        echo $apellidos;
       }
   
-      if (!empty($_REQUEST["edad"])) {
-        if(!($edad >= 18)){
+      if (empty($_REQUEST["edad"])) {
+        $edad = "";
+      }else{
+        $edad = test_input($_REQUEST["edad"]);
+        if(($edad < 18)){
             $edadErr = "Ha de ser mayor o igual a 18 años";
         }
       }
@@ -72,21 +82,22 @@ if(isset($_REQUEST['submit'])){
 
 
 function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
+  $data = trim($data); //quita espacios
+  $data = stripslashes($data);//quita contrabarras
+  $data = htmlspecialchars($data);//sustituye <> por menor que y mayor que
   return $data;
 }
 ?>
 
-<form method="REQUEST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-Nombre*: <input type="text" name="nombre" value="<?php echo $nombre;?>"><span class="error"><?php echo $nombreErr;?></span>
-<br><br>
+<form method="REQUEST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  <!--htmlspecialchars para que 
+no introduzcan un script malicioso, sustituye carácteres como <> por otros valores -->
+Nombre: <span>*</span><input type="text" name="nombre" value="<?php echo $nombre;?>"><span class="error"><?php echo $nombreErr;?></span>
+<br><br><!--<?php echo $nombre;?> es igual a <?=$nombre?> -->
 Apellidos: <input type="text" name="apellidos" value="<?php echo $apellidos;?>">
 <br><br>
 Edad: <input type="number" name="edad" value="<?php echo $edad;?>"><span class="error"><?php echo $edadErr;?></span>
 <br><br>
-E-mail*: <input type="text" name="email" value="<?php echo $email;?>"><span class="error"><?php echo $emailErr;?></span>
+E-mail: <span>*</span><input type="text" name="email" value="<?php echo $email;?>"><span class="error"><?php echo $emailErr;?></span>
 <br><br>
 Comentarios: <textarea name="comentarios" rows="5" cols="40"><?php echo $comentarios;?></textarea>
 <br><br>
