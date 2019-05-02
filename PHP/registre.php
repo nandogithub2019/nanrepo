@@ -11,7 +11,7 @@
 <?php
 /*
 Dado un formulario de acceso con los campos:
-Usuario, contraseña y repatir contraseña
+Usuario, contraseña y repetir contraseña
 Mirar:
     - las dos contraseñas son iguales
     - Longitud de contraseñas entre 6 y 8
@@ -28,7 +28,8 @@ Mirar:
   desde html y no vemos si la validación php funciona. una vez
   comprobado se vuelve a poner el tipo input number o email etc  */ 
 $usuario = $pass = $reppass = $usuarioErr = $passErr 
-= $reppassErr = "";
+= $reppassErr = $reppassErr1 = $passErr1 = $passErr2 = $passErr3
+= $passErr4 = $passErr5 = "";
 
 if(isset($_REQUEST['submit'])){
     if (empty($_REQUEST["usuario"])) {
@@ -37,7 +38,7 @@ if(isset($_REQUEST['submit'])){
       $usuario = test_input($_REQUEST["usuario"]);
       // check if name only contains letters and whitespace
       if (!preg_match("/^[a-zA-Z ]*$/",$usuario)) {
-        $usuarioErr = "Solo se permiten letras y espacios en blanco"; 
+        $usuarioErr1 = "Solo se permiten letras y espacios en blanco"; 
       }
     }
     
@@ -45,28 +46,38 @@ if(isset($_REQUEST['submit'])){
         $passErr = "Contraseña obligatoria";
       } else {//debería mirar si los 2 campos son iguales primero, he de cambiarlo...
         $pass = test_input($_REQUEST["pass"]);
-        if (strlen($pass)>8 || strlen($pass)<6) {
-            $passErr = "ha de contener entre 6 y 8 carácteres";
-            }
-        if(preg_match("/[A-Z]/",$pass)==0) {
-            $passErr = "ha de contener como mínimo una mayuscula";
-        }   
-        }
-    if (empty($_REQUEST["reppass"])) {
-        $reppassErr = " Verificar Contraseña obligatorio";
-      }else{
-        $reppass = test_input($_REQUEST["reppass"]);
+        
       }
-      
+
+    if (empty($_REQUEST["reppass"])) {
+        $reppassErr = "Contraseña obligatoria";
+      } else {//debería mirar si los 2 campos son iguales primero, he de cambiarlo...
+        $reppass = test_input($_REQUEST["reppass"]);
+        
+      }
+    if($pass != $reppass){
+      $reppassErr1 = "La contraseña no coincide ";
+    } 
+    if(strlen($pass)>8 || strlen($pass)<6) {
+      $passErr1 = "ha de contener entre 6 y 8 carácteres";
+      }
+    if(preg_match("/[A-Z]/",$pass)==0) {
+        $passErr2 = "ha de contener como mínimo una mayúscula";
+    }  
+    if(preg_match("/[a-z]/",$pass)==0) {
+      $passErr3 = "ha de contener como mínimo una minúscula";
+    }
+    if(preg_match("/[0-9]/",$pass)==0) {
+      $passErr4 = "ha de contener como mínimo un caracter numérico";
+    }
+    if(preg_match("/[*?¿&%#@|]/",$pass)==0) {
+      $passErr5 = "ha de contener como mínimo un caracter especial";
+    }
     
-
-   
-
-} 
-  
-
-
-function test_input($data) {
+}      
+       
+      
+  function test_input($data) {
   $data = trim($data); //quita espacios
   $data = stripslashes($data);//quita contrabarras
   $data = htmlspecialchars($data);//sustituye <> por menor que y mayor que
@@ -77,17 +88,19 @@ function test_input($data) {
 <form method="REQUEST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  <!--htmlspecialchars para que 
 no introduzcan un script malicioso, sustituye carácteres como <> por otros valores -->
 
-<label>Usuario:</label> <span>*</span><input type="text" name="usuario" value="<?php echo $usuario;?>"><span class="error"><?php echo $usuarioErr;?></span>
+<label>Usuario:</label> <span>*</span><input type="text" name="usuario" value="<?php echo $usuario;?>"><span class="error"><?php //echo $usuarioErr;?></span>
 <br><br><!--<?php echo $usuario;?> es igual a <?=$usuario?> -->
-<label>Contraseña:</label><span>*</span> <input type="text" name="pass" value="<?php echo $pass;?>"><span class="error"><?php echo $passErr;?></span>
+<label>Contraseña:</label><span>*</span> <input type="password" name="pass" value="<?php echo $pass;?>"><span class="error"><?php //echo $passErr;?></span>
 <br><br>
-<label>Rep Contraseña:</label><span>*</span> <input type="text" name="reppass" value="<?php echo $reppass;?>"><span class="error"><?php echo $reppassErr;?></span>
+<label>Rep Contraseña:</label><span>*</span> <input type="password" name="reppass" value="<?php echo $reppass;?>"><span class="error"><?php //echo $reppassErr;?>
 <br><br>
 <input type="submit" name="submit" value="Submit">
 </form>
-
-
-
+<br><br>
+<?php
+    echo $reppassErr ."<br>".$reppassErr1;
+    echo $passErr1."<br>".$passErr2."<br>".$passErr3."<br>".$passErr4."<br>".$passErr5; 
+?>
 </body>
 </html>
 

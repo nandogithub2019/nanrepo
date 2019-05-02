@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +12,18 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
     
+    if($_SESSION["user"] == 'user' && $_SESSION["pass"] == 'password'){
+        
+    echo "usuario correcto";
+    
+    }else{
+        header("location:ejercicio5_bis.php");
+    }
+    ?>
 
-    <h3 style="color:green">usuario correcto<h3>
+    
    
 </body>
 </html>

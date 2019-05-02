@@ -50,9 +50,11 @@ if(isset($_REQUEST['submit'])){
         $apellidos = "";
       } else {
         $apellidos = test_input($_REQUEST["apellidos"]);
-        echo $apellidos;
-      }
-  
+        // check if name only contains letters and whitespace
+      if (!preg_match("/^[a-zA-Z ]*$/",$apellidos)) {
+        $apellidosErr = "Solo se permiten letras y espacios en blanco"; 
+       }
+      } 
       if (empty($_REQUEST["edad"])) {
         $edad = "";
       }else{
@@ -93,7 +95,7 @@ function test_input($data) {
 no introduzcan un script malicioso, sustituye carácteres como <> por otros valores -->
 Nombre: <span>*</span><input type="text" name="nombre" value="<?php echo $nombre;?>"><span class="error"><?php echo $nombreErr;?></span>
 <br><br><!--<?php echo $nombre;?> es igual a <?=$nombre?> -->
-Apellidos: <input type="text" name="apellidos" value="<?php echo $apellidos;?>">
+Apellidos: <input type="text" name="apellidos" value="<?php echo $apellidos;?>"><span class="error"><?php echo $apellidosErr;?></span>
 <br><br>
 Edad: <input type="number" name="edad" value="<?php echo $edad;?>"><span class="error"><?php echo $edadErr;?></span>
 <br><br>
