@@ -1,29 +1,24 @@
 <?php
 session_start();
-?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <?php
-    
-    if($_SESSION["user"] == 'user' && $_SESSION["pass"] == 'password'){
+
+if(isset($_REQUEST["logout"])){
+    session_destroy(); 
+    header('location:ejercicio5_bis.php');           
+}
         
-    echo "usuario correcto";
+if(isset($_SESSION["login"])){
+?>
+    Bienvenido......<?=$_SESSION["usuario"]?>
     
+    <a href="acceso.php?logout">[logout]</a><!--'?logout' pasa por GET
+    logout que es recogido con $_REQUEST["logout"].Normalmente
+    $_REQUEST recoge el valor del atributo name de los inputs 
+    pero esta es otra manera -->
+<?php    
     }else{
-        header("location:ejercicio5_bis.php");
+        header('Location:ejercicio5_bis.php');           
     }
-    ?>
-
-    
+?>
    
-</body>
-</html>

@@ -1,17 +1,6 @@
 <?php
 session_start();
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Document</title>
-</head>
-<body>
-<?php
+
 /*
 LOGIN
 -Mediante un campo de texto y uno de password, comprobaremos
@@ -26,30 +15,34 @@ en rojo.
 $mensaje='';
 if(isset($_REQUEST['submit'])){
     
-    $user = $_REQUEST['user'];
-    $pass = $_REQUEST['pass'];
-    $_SESSION['user'] = $user;
-    $_SESSION['pass'] = $pass;
-    
-    if($_SESSION['user'] == 'user' && $_SESSION['pass'] == 'password'){
-        header("location:acceso.php");
+    if($_REQUEST['user'] == 'user' && $_REQUEST['pass'] == 'password'){
+        $_SESSION["login"]=true;
+        $_SESSION["usuario"]=$_REQUEST["user"];
+        header("location:acceso1.php");
         
-        //$correcto=false;
+        
     }else{          
         $mensaje='usuario incorrecto';
         
-        echo $mensaje;        
+            
     
     }
 }        
   
-             
-    
-  
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Document</title>
+</head>
+<body>
 
-<br>
+<?=$mensaje?>
 
 <form a method="REQUEST">
 Usuario<input type="text" name="user" id="user">
