@@ -8,6 +8,7 @@ if(isset($_REQUEST["logout"])){
     setcookie("nomusuari",0,1);
     header('Location:login.php'); 
 }
+ 
 
 if(((isset($_SESSION["pass"]) 
 && $_SESSION["pass"]=='700c8b805a3e2a265b01c77614cd8b21'
@@ -24,7 +25,11 @@ if(isset($_SESSION["nom"])){
 } else{
   $_nombre=$_COOKIE["nomusuari"];
 }   
+
+
   
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -51,16 +56,16 @@ if(isset($_SESSION["nom"])){
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Logotipo</a>
+    <a class="navbar-brand" href="#">FakeBook</a>
   </div>
 
   <!-- Agrupar los enlaces de navegación, los formularios y cualquier
        otro elemento que se pueda ocultar al minimizar la barra -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li><a href="noticias.php">Noticias</a></li>
-      <li><a href="#">Editar Noticia</a></li>
-      <li><a href="#">Eliminar Noticia</a></li>
+      <li><a href="noticias.php">Publicaciones</a></li>
+      <li><a href="#">Nueva publicación</a></li>
+      <li><a href="#">Eliminar publicación</a></li>
       
     </ul>
 
@@ -77,24 +82,37 @@ if(isset($_SESSION["nom"])){
 </nav>
 </div>
 <div class="container"> 
-<div class="panel panel-primary">
-  <div class="panel-heading">
-  <h3 class="panel-title">Título del panel con estilo h3</h3>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Título del panel con estilo h3</h3>
+    </div>
+    <div class="panel-body">
+      <p>
+      Contenido del panel
+      </p>
+      <p>
+        <input type="submit" name="contador" value="Likes 12" class="btn btn-primary" class="badge badge-light">
+      </p>
+    </div>
   </div>
-  <div class="panel-body">
-    Contenido del panel
-  </div>
-</div>
 
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">Título del panel con estilo h3</h3>
-  </div>
-  <div class="panel-body">
-    Contenido del panel
-  </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Título del panel con estilo h3</h3>
+    </div>
+    <div class="panel-body">
+      <p>
+      Contenido del panel
+      </p>
+      <p>
+        <input type="submit" name="contador" value="Likes 23" class="btn btn-primary" class="badge badge-light">
+      </p>
+    </div>
 </div>
 </div>
+
+
+    
 </body>
 <div class="container"> 
 <footer class="footer">Pie de paginas</footer>
