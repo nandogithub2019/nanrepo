@@ -69,16 +69,16 @@ if(isset($_REQUEST["alta"])){
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Logotipo</a>
+    <a class="navbar-brand" href="#">FakeBook</a>
   </div>
 
   <!-- Agrupar los enlaces de navegación, los formularios y cualquier
        otro elemento que se pueda ocultar al minimizar la barra -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li><a href="noticias.php">Noticias</a></li>
-      <li><a href="#">Editar Noticia</a></li>
-      <li><a href="#">Eliminar Noticia</a></li>
+      <li><a href="noticias.php">Publicaciones</a></li>
+      <li><a href="#">Nueva publicación</a></li>
+      <li><a href="#">Eliminar publicación</a></li>
       
     </ul>
 

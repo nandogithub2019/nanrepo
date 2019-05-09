@@ -1,14 +1,14 @@
 <?php
 session_start();
-/*print_r($_REQUEST);
-print_r($_SESSION);
-print_r($_COOKIE);*/
+
+
 if(isset($_REQUEST["logout"])){
     session_destroy(); 
     setcookie("password",0,1);
     setcookie("nomusuari",0,1);
     header('Location:login.php'); 
 }
+
 if(((isset($_SESSION["pass"]) 
 && $_SESSION["pass"]=='700c8b805a3e2a265b01c77614cd8b21'
 && isset($_SESSION["nom"]) 
@@ -76,8 +76,29 @@ if(isset($_SESSION["nom"])){
   </div>
 </nav>
 </div>
+<div class="container"> 
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Título del panel con estilo h3</h3>
+  </div>
+  <div class="panel-body">
+    Contenido del panel
+  </div>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Título del panel con estilo h3</h3>
+  </div>
+  <div class="panel-body">
+    Contenido del panel
+  </div>
+</div>
+</div>
 </body>
+<div class="container"> 
 <footer class="footer">Pie de paginas</footer>
+</div>
 </html>
 <?php
 }else{

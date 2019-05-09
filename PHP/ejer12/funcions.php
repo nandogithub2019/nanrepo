@@ -67,6 +67,15 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
-
+/*
+function logout($logout){
+    if(isset($logout)){
+    session_destroy(); 
+    setcookie("password",0,1);
+    setcookie("nomusuari",0,1);
+    header('Location:login.php'); 
+    }
+}
+*/
 
 ?>        
