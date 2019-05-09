@@ -54,10 +54,12 @@
                     $errors=("<li>Las contraseñas no coinciden.</li>");
                 }else{
                     $errors=valida_contrasena($contrasena1,$errors);
+                    $errUsu=valida_nombre($usuario);
+                    $errapellido=valida_apellido($apellido);
                     $erremail=valida_correo($email);
                     $errfechaNacimiento = validar_fecha($fechaNacimiento);
                    
-                    if (empty($errors) && !$erremail && !$errfechaNacimiento){
+                    if (empty($errors) && !$erremail && !$errfechaNacimiento && !$errUsu){
                               
                         header('Location:login.php');
                     }
@@ -73,38 +75,44 @@
                 <div class="form-group">
                    <label class="control-label" class="has-success">Nombre:</label> 
                    <input class="form-control" type="text" name="usuario" value="<?=$usuario?>">
+                   <span class="error">* <?=$errUsu?></span>
                 </div>
-                <span class="error">* <?=$errUsu?></span>
+                
                 
                 <div class="form-group">
                    <label class="control-label" class="has-success">Apellido:</label> 
                    <input class="form-control" type="text" name="apellido" value="<?=$apellido?>">
+                   <span class="error">* <?=$errapellido?></span>
                 </div>
-                <span class="error">* <?=$errapellido?></span>
+                
                 
                 <div class="form-group">
                    <label class="control-label" class="has-success">Fecha de nacimiento:</label> 
                    <input class="form-control" type="text" name="fechanacimiento" value="<?=$fechaNacimiento?>" placeholder="24/02/1990">
+                   <span class="error">* <?=$errfechaNacimiento?></span>
                 </div>
-                <span class="error">* <?=$errfechaNacimiento?></span>
+                
                 
                 <div class="form-group">
                    <label class="control-label" class="has-success">Email:</label> 
                    <input class="form-control" type="text" name="email" value="<?=$email?>">
+                   <span class="error">* <?=$erremail?></span>
                 </div>
-                <span class="error">* <?=$erremail?></span>
+                
 
                 <div class="form-group">
                 <label>Contraseña:</label> 
                 <input class="form-control" type="password" name="contrasena1" value="<?=$contrasena1?>" placeholder="Nand1!">
-                </div>
                 <span class="error">* <?=$errCont1?></span>
+                </div>
+                
                 
                 <div class="form-group">   
                 <label>Repite contraseña:</label> 
                 <input class="form-control" type="password" name="contrasena2" value="<?=$contrasena2?>" placeholder="Nand1!">
-                </div>
                 <span class="error">* <?=$errCont2?></span>
+                </div>
+                
 
                   
                 <input class="form-control" class="btn bttn-primary" type="submit" name="submit" value="aceptar">
