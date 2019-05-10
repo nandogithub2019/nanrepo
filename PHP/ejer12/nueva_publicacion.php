@@ -41,7 +41,7 @@ if(((isset($_SESSION["pass"])
     <link rel="stylesheet" href="lib/css/bootstrap.min.css">
     <script src="lib/js/jquery-3.3.1.min.js"></script>
     <script src="lib/js/bootstrap.min.js"></script>
-
+    
   </head>
   <body>
     <div class="container">
@@ -72,9 +72,9 @@ if(((isset($_SESSION["pass"])
     
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><?php  print_r($_nombre)?></a></li>
-      <li><a href="menu_privado.php?logout">Logout</a></li>
+      <li><a href="nueva_publicacion.php?logout">Logout</a></li>
       
-
+      
     </ul>
   </li>
 </ul>
@@ -84,39 +84,30 @@ if(((isset($_SESSION["pass"])
 <div class="container"> 
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">Título del panel con estilo h3</h3>
+      <h3 class="panel-title"><?php print_r($_SESSION['titulo'])?></h3>
     </div>
     <div class="panel-body">
       <p>
-        Si ya has estado en Montserrat, sabrás que es uno de los lugares más bonitos de Cataluña (Si no, no esperes más, y ¡reserva ya uno de nuestros tours!). Se dice que es una montaña mágica, donde se unen la naturaleza, la cultura, la historia y la religión. El monasterio Benedictino, que es la parte de la montaña más visitada en la mayoría de los tours, es considerado un hito. Sin embargo, lo que no saben la mayoría de aquellas personas que visitan Montserrat es que también es un Parque Natural con muchos caminos para hacer senderismo
+        <?php print_r($_SESSION['descripcion'])?>
       </p>
-      <div class="panel-footer">
-      <div class="form-group">
-                   <label class="control-label" class="has-success">Comentarios:</label> 
-                   <input class="form-control" type="text" name="email" value="">
-                   
-                </div>
-
-      </div>
       <p>
         <input type="submit" name="contador" value="Likes 12" class="btn btn-primary" class="badge badge-light">
       </p>
     </div>
   </div>
 
-  <div class="panel panel-primary">
+  <!--<div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">Título del panel con estilo h3</h3>
     </div>
     <div class="panel-body">
       <p>
-        Si ya has estado en Montserrat, sabrás que es uno de los lugares más bonitos de Cataluña (Si no, no esperes más, y ¡reserva ya uno de nuestros tours!). Se dice que es una montaña mágica, donde se unen la naturaleza, la cultura, la historia y la religión. El monasterio Benedictino, que es la parte de la montaña más visitada en la mayoría de los tours, es considerado un hito. Sin embargo, lo que no saben la mayoría de aquellas personas que visitan Montserrat es que también es un Parque Natural con muchos caminos para hacer senderismo
+        Contenido del panel
       </p>
-      <img src="../imgs/flor.jpg">
       <p>
         <input type="submit" name="contador" value="Likes 23" class="btn btn-primary" class="badge badge-light">
       </p>
-    </div>
+    </div>-->
   </div>
 </div>
 

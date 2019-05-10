@@ -1,4 +1,5 @@
 <?php
+# Funciones para validar formulario de alta
 
 function valida_contrasena($contrasena,$errors){
     if(strlen($contrasena) < 6 || strlen($contrasena) > 8){
@@ -59,6 +60,26 @@ function validar_fecha($fechaNacimiento){ //todo: $valores[2]-fecha actual>18
     }
     
     return $errfechaNacimiento;
+}
+
+# Final funciones formulario de alta
+
+function valida_titulo($titulo){
+    $errors ="";
+    if (preg_match('/[0-9#~$%]/',$titulo) ||
+     (strlen($titulo) < 10 )){
+        $errors = "El campo título debe contener texto y un mínimo de 10 carácteres";
+    }
+return $errors;
+}
+
+function valida_descripcion($descripcion){
+    $errors ="";
+    if (preg_match('/[0-9#~$%]/',$descripcion) ||
+     (strlen($descripcion) > 500 )){
+        $errors = "El campo desripción debe contener texto y un máximo de 500 carácteres\r";
+    }
+return $errors;
 }
 
 function test_input($data) {

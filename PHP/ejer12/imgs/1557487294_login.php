@@ -106,12 +106,4 @@ if(isset($_REQUEST["alta"])){
     
     </form>
 </body>
-<div class="container">
-  <div class="panel panel-danger">
-    <div class="panel-footer">
-      <label class="control-label" class="has-success">Información legal
-      </label> 
-    </div>
-  </div>
-</div>
 </html>
